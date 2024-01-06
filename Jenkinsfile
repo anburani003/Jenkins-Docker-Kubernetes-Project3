@@ -41,17 +41,16 @@ pipeline {
 	    }
 	    
 	    stage("Push Docker Image") {
-		    steps {
-			    script {
-				    echo "Push Docker Image"
-				    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-            				sh "docker login -u anbuvanitha -p ${dockerhub}"
-				    }
-				        myimage.push("${env.BUILD_ID}")
-				    
-			    }
-		    }
-	    }
+	        steps {
+                script {
+                    echo "Push Docker Image"
+                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+                        myimage.push()
+                    }
+                }
+            }
+        }
+
 	    
 	    stage('Deploy to K8s') {
 		    steps{
