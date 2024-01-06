@@ -35,7 +35,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("anbuvanitha/prod:${env.BUILD_ID}")
+				    myimage = docker.build("anbuvanitha/prod:11.1${env.BUILD_ID}")
 			    }
 		    }
 	    }
