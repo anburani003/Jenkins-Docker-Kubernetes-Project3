@@ -52,22 +52,6 @@ pipeline {
             }
         }
 
-	    stage('Deploy to K8s') {
-	        steps {
-	            echo "Deployment started ..."
-	            sh 'ls -ltr'
-	            sh 'pwd'
-	            sh "sed -i 's/tagversion/${env.BUILD_ID}/g' serviceLB.yaml"
-	            sh "sed -i 's/tagversion/${env.BUILD_ID}/g' deployment.yaml"
-	            
-	            echo "Applying serviceLB.yaml"
-	            sh "kubectl apply -f serviceLB.yaml"
-	            echo "Applying deployment.yaml"
-	            sh "kubectl apply -f deployment.yaml"
-	            
-	            echo "Deployment Finished ..."
-	        }
-        }
-
+	   
     }
 }
