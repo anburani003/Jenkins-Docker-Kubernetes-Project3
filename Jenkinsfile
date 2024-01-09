@@ -6,7 +6,7 @@ pipeline {
 	
 	environment {
 		PROJECT_ID = 'spry-ether-410313'
-                CLUSTER_NAME = 'cluster-1'
+                CLUSTER_NAME = 'my-project-cluster-1'
                 LOCATION = 'us-central1-c'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
@@ -35,7 +35,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("anbuvanitha/prod:11.1${env.BUILD_ID}")
+				    myimage = docker.build("anbuvanitha/prod:${env.BUILD_ID}")
 			    }
 		    }
 	    }
